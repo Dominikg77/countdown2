@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+
+
+
+// @ mit BT5 und SCSS komplett neu aufbauen so das es responsive ist und auch wirklich schön 
+// @ weite Funktion wie NFT, Trading etc einbauen und Bild z.b. wechseln oder auch den hintergrund
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section {
+    position: relative;
+}
+
+.page {
+    position: relative;
+    z-index: 3;
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page h1 {
+    font-size: 5rem;
+    font-weight: 300;
+    margin: 10rem 0 2rem 0;
+    padding: 0 0 0 0;
+    color: #f1bd20;
+    line-height: 3rem;
+}
+
+.page p {
+    font-size: 1.8rem;
+    line-height: 1.5em;
+    font-weight: 300;
+    color: #f1bd20;
+}
+
+.page #timer {
+    margin: 6rem 0 0 0;
+    font-size: 6rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+body .page #timer span {
+    margin: 0 4rem 0 0;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.7rem;
+}
+
+body .page #timer span i {
+    font-style: normal;
+    font-size: 1rem;
+    color: #c7c7c7;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    margin-bottom: -50px;
+    margin-top: -25px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -50px;
+}
+
+.edit-container {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: flex;
+}
+
+.edit-container button {
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+input {
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    border: none;
+    background-color: grey;
+    color: gold;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: white;
+}
+
+
+.position-edit-btn {
+    position: absolute;
+    bottom: 30px;
+}
+
+.edit-btn {
+    background-color: transparent;
+    border: none;
+    color: rgba(128, 128, 128, 0.182);
+}
+
+.edit-btn:hover {
+    transition: all 125ms ease-in-out;
+    background-color: rgba(0, 0, 0, 0.484);
+    color: white
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 36px !important;
+        margin-top: 90px !important;
+    }
+
+    p {
+        font-size: 24px !important;
+        margin-top: -20px !important;
+    }
+
+    img {
+        margin-top: -50px;
+        width: 100px;
+        height: 100px;
+        margin-bottom: -200px;
+    }
+
+    body .page #timer {
+        font-size: 48px;
+        color: #fff;
+        margin-bottom: -240px !important;
+    }
+
+    #timer {
+        display: flex;
+        align-items: center !important;
+        flex-direction: column;
+        margin: 0px !important;
+        margin-bottom: 16px;
+        margin-top: 50px !important;
+        margin-left: 36px !important;
+    }
+}
+
+span {
+    margin-bottom: 24px !important;
+}
+
+.dnone {
+    display: none;
+}
+
+.delete {
+    margin-left: 12px;
+    color: black !important;
+    background-color: red !important;
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "coutndown-8d184": {
+      "hosting": {
+        "coutndownV2": [
+          "coutndown-8d184"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "coutndown-8d184"
+  }
+}

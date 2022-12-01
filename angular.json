@@ -100,8 +100,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "coutndownV2:build:production",
+            "firebaseProject": "coutndown-8d184",
+            "firebaseHostingSite": "coutndown-8d184"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "82dd96b2-fe56-45ca-9403-3f6c64629fe6"
   }
 }
