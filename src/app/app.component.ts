@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { timeout } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +18,11 @@ export class AppComponent {
   htmlsubtitel: any;
   dateInput: any;
   checkoutFormAsText: any;
+  day: number = 0;
+  hour: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
+  isexpired: boolean = false;
 
 
   checkoutForm = this.formBuilder.group({
@@ -37,32 +41,21 @@ export class AppComponent {
   }
 
   TimerFunction() {
-    setInterval(() => {
+    var intervall = setInterval(() => {
       // var ReleaseDate = new Date("Nov 26, 2022 13:00:00").getTime();
       this.DatumHeute = new Date().getTime();
       // var Differenz = this.ReleaseDate - this.DatumHeute;
       var Differenz = this.date - this.DatumHeute;
-      var d = Math.floor(Differenz / (1000 * 60 * 60 * 24));
-      var h = Math.floor((Differenz % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var m = Math.floor((Differenz % (1000 * 60 * 60)) / (1000 * 60));
-      var s = Math.floor((Differenz % (1000 * 60)) / 1000);
-
-      this.htmltimer =
-        "<span>" +
-        d +
-        "<br><i>Tage</i></span><span>" +
-        h +
-        "<br><i>Stunden</i></span><span>" +
-        m +
-        "<br><i>Minuten</i></span><span>" +
-        s +
-        "<br><i>Sekunden</i></span>";
-
+      this.day = Math.floor(Differenz / (1000 * 60 * 60 * 24));
+      this.hour = Math.floor((Differenz % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutes = Math.floor((Differenz % (1000 * 60 * 60)) / (1000 * 60));
+      this.seconds = Math.floor((Differenz % (1000 * 60)) / 1000);
+      this.isexpired = false
       if (Differenz < 0) {
-        // clearInterval(TimerFunction);
-        this.htmltimer = "Abgelaufen";
+        this.isexpired = true;
+        clearInterval(intervall);
       }
-    }, 1000);
+    }, 100);
   }
 
   onSubmit() {

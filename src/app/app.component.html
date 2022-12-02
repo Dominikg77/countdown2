@@ -2,7 +2,8 @@
 
 
   <div [ngClass]="{dnone:state}" id="edit" class="edit-container">
-    <div class="dnone">
+
+    <!-- <div class="dnone">
       <label for="test">
         <input type="checkbox" placeholder="test">
         <span>Mindset</span>
@@ -22,29 +23,48 @@
         <input type="checkbox" placeholder="test">
         <span>NFT</span>
       </label>
-    </div>
+    </div> -->
 
     <form class="d-flex align-items-center" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
       <input formControlName="titel" type="text" placeholder="Titel">
       <input formControlName="subtitel" type="text" placeholder="Subtitel">
       <input formControlName="dateInput" type="datetime-local" placeholder="Event Datum">
-      <button type="submit">Erstellen</button>
+      <button class="btn btn-warning" type="submit">Erstellen</button>
     </form>
-    <button (click)="deleteF()" class="delete">Delete</button>
-
-
+    <button class="btn btn-danger ms-2" (click)="deleteF()">Clear</button>
+    <button class="btn btn-light ms-2" (click)="editModusToggel()">Ausblenden</button>
   </div>
 
-
-  <div class="container">
-    <div class="img-1">
-      <img src="../assets/img/logo-mbk_gold_small.png">
+  <div class="container d-flex flex-column align-items-center justify-content-center">
+    <div class=" d-flex justify-content-center mb-3">
+      <img class=" w-50 h-auto" src="../assets/img/logo-mbk_gold_small.png">
     </div>
 
-    <div class="page">
-      <h1 [innerHTML]="htmltitel"></h1>
-      <p [innerHTML]="htmlsubtitel" class="beschreibung"></p>
-      <div class="tt" id="timer" [innerHTML]="htmltimer"></div>
+    <div class="content fluid">
+      <h1 class="mb-2" [innerHTML]="htmltitel"></h1>
+      <h4 class="mb-3" [innerHTML]="htmlsubtitel" class="beschreibung"></h4>
+
+
+      <div *ngIf="!isexpired" class="d-flex flex-column	flex-md-row justify-content-around position-timer ">
+        <span>
+          <p>{{this.hour}} <br> <small>Stunden</small> </p>
+        </span>
+        <span>
+          <p>{{this.day}} <br> <small>Tage</small> </p>
+        </span>
+        <span>
+          <p>{{this.minutes}} <br> <small>Minuten</small> </p>
+        </span>
+        <span>
+          <p>{{this.seconds}} <br> <small>Sekunden</small> </p>
+        </span>
+      </div>
+
+      <div *ngIf="isexpired">
+        <p class="text-red">Abgelaufen</p>
+      </div>
+
+
     </div>
   </div>
   <div class="position-edit-btn">
