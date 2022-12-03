@@ -1,11 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 @import "~bootstrap/scss/bootstrap";
+@import 'src/_var.scss';
 
-// @ mit BT5 und SCSS komplett neu aufbauen so das es responsive ist und auch wirklich schön 
-// @ weite Funktion wie NFT, Trading etc einbauen und Bild z.b. wechseln oder auch den hintergrund
 
-.container {
-    margin-top: -20px;
+// @ Button Disabeln Erstellen wenn nicht alle werte ausgefüllt sind 
+// @ Wenn der Timer agbelaufen ist, was anzeigen und einen Ton gegben oder z.b. Logo blinken lassen
+// @ Von beginn an, edit Modus ausblenden
+
+
+.bg-img {
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    position: absolute;
+    object-fit: cover;
+}
+
+.img-main {
+    width: 50%;
+    height: auto;
+    margin-top: 50px;
+    max-width: 800px;
+    max-height: 800px;
 }
 
 .content {
@@ -15,11 +31,13 @@
     max-width: 120rem;
     margin: 0 auto;
     text-align: center;
+    margin-top: 100px;
+
 
     h1 {
         font-size: 4rem;
         font-weight: 500;
-        color: #f1bd20;
+        color: $gold;
         line-height: 5rem;
     }
 
@@ -27,30 +45,30 @@
         font-size: 2.5rem;
         font-weight: 300;
         padding: 0 0 0 0;
-        color: #fff;
+        color: $white;
         font-style: italic;
         line-height: 3rem;
     }
 
-    p {
+    h5 {
         font-size: 2.5rem;
         line-height: 1.5em;
         font-weight: 600;
-        color: #f1bd20;
+        color: $gold;
+    }
+
+    p {
+        color: $white;
+        font-size: 2rem !important;
+        font-weight: 300 !important;
     }
 
     .position-timer {
         margin-top: 100px;
     }
 
-    small {
-        color: white;
-        font-size: 2rem !important;
-        font-weight: 300 !important;
-    }
-
     .text-red {
-        color: red !important;
+        color: $red !important;
     }
 
 }
@@ -58,12 +76,12 @@
 
 .edit-container {
     position: absolute;
-    top: 20px;
-    left: 50px;
+    top: 30px;
     display: flex;
+    background-color: black;
 
     .edit-container button {
-        background-color: black;
+        background-color: $black;
         border: none;
         color: white;
         font-size: 16px;
@@ -79,31 +97,50 @@
         border: none;
         background-color: grey;
         font-size: 16px;
-        color: gold;
+        color: $gold;
+        z-index: 5;
     }
 
     input:nth-child(2) {
-        color: white;
+        color: $white;
     }
 
     input::placeholder {
-        color: white;
+        color: $white;
     }
 
     .delete {
         margin-left: 12px;
-        color: black !important;
-        background-color: red !important;
+        color: $black !important;
+        background-color: $red !important;
     }
+}
+
+
+.container-radio {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    color: $gold;
+    font-size: 1rem;
+    background-color: black;
+
+    label {
+        font-weight: 600;
+    }
+
 }
 
 
 .position-edit-btn {
     position: absolute;
-    bottom: 30px;
+    top: 5px;
+    left: 5px;
 
     .edit-btn {
         background-color: transparent;
+        padding: 10px;
+        border-radius: 10px;
         border: none;
         color: rgba(128, 128, 128, 0.182);
     }
@@ -111,10 +148,25 @@
     .edit-btn:hover {
         transition: all 125ms ease-in-out;
         background-color: rgba(0, 0, 0, 0.484);
-        color: white
+        color: $white
     }
 }
 
 .dnone {
     display: none;
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        margin-top: -50px !important;
+    }
+
+    img {
+        width: 25% !important;
+    }
+
+    .position-timer {
+        margin-top: 20px !important;
+    }
+
 }

@@ -1,73 +1,68 @@
-<body>
+<div *ngIf="!isImg">
+  <img class="bg-img" src="{{bgImgview}}">
+</div>
+
+<div [ngClass]="{dnone:state}" id="edit" class="edit-container">
+
+  <form class="d-flex align-items-center flex-column	flex-md-row" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <input class="mb-2" formControlName="titel" type="text" placeholder="Titel">
+    <input class="mb-2" formControlName="subtitel" type="text" placeholder="Subtitel">
+    <input class="mb-2" formControlName="dateInput" type="datetime-local" placeholder="Event Datum">
+    <button class="btn btn-warning" type="submit">Erstellen</button>
+  </form>
+  <button class="btn btn-danger ms-2 h-50" (click)="deleteF()">Clear</button>
+  <!-- <button class="btn btn-light ms-2 h-50" (click)="editModusToggel()">Ausblenden</button> -->
 
 
-  <div [ngClass]="{dnone:state}" id="edit" class="edit-container">
 
-    <!-- <div class="dnone">
-      <label for="test">
-        <input type="checkbox" placeholder="test">
-        <span>Mindset</span>
-      </label>
+  <div class="container-radio">
+    <label class="me-3" id="example-radio-group-label">Kategorie auswählen:</label>
+    <mat-radio-group class="example-radio-group" [(ngModel)]="aktiveCategorie">
+      <mat-radio-button class="example-radio-button me-2" *ngFor="let categorie of categories" [value]="categorie">
+        {{categorie}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
 
-      <label for="test">
-        <input type="checkbox" placeholder="test">
-        <span>Blockchain</span>
-      </label>
 
-      <label for="test">
-        <input type="checkbox" placeholder="test">
-        <span>Trading</span>
-      </label>
-
-      <label for="test">
-        <input type="checkbox" placeholder="test">
-        <span>NFT</span>
-      </label>
-    </div> -->
-
-    <form class="d-flex align-items-center" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-      <input formControlName="titel" type="text" placeholder="Titel">
-      <input formControlName="subtitel" type="text" placeholder="Subtitel">
-      <input formControlName="dateInput" type="datetime-local" placeholder="Event Datum">
-      <button class="btn btn-warning" type="submit">Erstellen</button>
-    </form>
-    <button class="btn btn-danger ms-2" (click)="deleteF()">Clear</button>
-    <button class="btn btn-light ms-2" (click)="editModusToggel()">Ausblenden</button>
+<div class="container d-flex flex-column align-items-center justify-content-center">
+  <div class=" d-flex justify-content-center mb-3">
+    <img class="img-main" src="{{mainImgview}}">
   </div>
 
-  <div class="container d-flex flex-column align-items-center justify-content-center">
-    <div class=" d-flex justify-content-center mb-3">
-      <img class=" w-50 h-auto" src="../assets/img/logo-mbk_gold_small.png">
+  <div class="content fluid">
+    <h1 class="mb-2" [innerHTML]="htmltitel"></h1>
+    <h4 class="mb-3" [innerHTML]="htmlsubtitel" class="beschreibung"></h4>
+
+
+    <div *ngIf="!isexpired"
+      class="d-flex flex-column	flex-md-row justify-content-around align-items-center position-timer ">
+      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
+        <h5 class="me-2">{{this.hour}}</h5>
+        <p class="ms-2">Stunden</p>
+      </span>
+      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
+        <h5 class="me-2">{{this.day}}</h5>
+        <p class="ms-2">Tage</p>
+      </span>
+      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
+        <h5 class="me-2">{{this.minutes}}</h5>
+        <p class="ms-2">Minuten</p>
+      </span>
+      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
+        <h5 class="me-2">{{this.seconds}}</h5>
+        <p class="ms-2">Sekunden</p>
+      </span>
     </div>
 
-    <div class="content fluid">
-      <h1 class="mb-2" [innerHTML]="htmltitel"></h1>
-      <h4 class="mb-3" [innerHTML]="htmlsubtitel" class="beschreibung"></h4>
-
-
-      <div *ngIf="!isexpired" class="d-flex flex-column	flex-md-row justify-content-around position-timer ">
-        <span>
-          <p>{{this.hour}} <br> <small>Stunden</small> </p>
-        </span>
-        <span>
-          <p>{{this.day}} <br> <small>Tage</small> </p>
-        </span>
-        <span>
-          <p>{{this.minutes}} <br> <small>Minuten</small> </p>
-        </span>
-        <span>
-          <p>{{this.seconds}} <br> <small>Sekunden</small> </p>
-        </span>
-      </div>
-
-      <div *ngIf="isexpired">
-        <p class="text-red">Abgelaufen</p>
-      </div>
-
-
+    <div *ngIf="isexpired">
+      <p class="text-red">Abgelaufen</p>
     </div>
+
+
   </div>
-  <div class="position-edit-btn">
-    <button class="edit-btn" (click)="editModusToggel()">bearbeiten</button>
-  </div>
-</body>
+</div>
+<div class="position-edit-btn">
+  <button class="edit-btn" (click)="editModusToggel()">bearbeiten</button>
+</div>

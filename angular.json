@@ -37,13 +37,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 }
               ],
               "fileReplacements": [
@@ -110,11 +110,23 @@
             "firebaseProject": "coutndown-8d184",
             "firebaseHostingSite": "coutndown-8d184"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "82dd96b2-fe56-45ca-9403-3f6c64629fe6"
+    "analytics": "82dd96b2-fe56-45ca-9403-3f6c64629fe6",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

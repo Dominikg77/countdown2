@@ -5,12 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -22,10 +19,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
+    MatRadioModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
