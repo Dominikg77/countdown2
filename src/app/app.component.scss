@@ -186,9 +186,25 @@
         margin-top: 20px !important;
     }
 
+    h1 {
+        font-size: 3rem;
+    }
+
+    svg {
+        font-size: 16rem !important;
+        width: 200px !important;
+    }
+
+    .edit-container {
+        left: 0px;
+        z-index: 10;
+        background-color: black;
+        padding: 10px;
+    }
+
 }
 
-//Animate 1
+//Animate Titel
 .animate-charcter {
     text-transform: uppercase;
     background-image: linear-gradient(-225deg,
@@ -214,54 +230,7 @@
 }
 
 
-//Animate 2
-// @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-
-// * {
-//     padding: 0;
-//     margin: 0;
-//     box-sizing: border-box;
-// }
-
-// body {
-//     background-color: #151719;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     min-height: 100vh;
-// }
-
-// .waviy {
-//     position: relative;
-//     -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, .2));
-//     font-size: 60px;
-// }
-
-// .waviy span {
-//     font-family: 'Alfa Slab One', cursive;
-//     position: relative;
-//     display: inline-block;
-//     color: $gold;
-//     text-transform: uppercase;
-//     animation: waviy 1s infinite;
-//     animation-delay: calc(.1s * var(--i));
-
-// }
-
-// @keyframes waviy {
-
-//     0%,
-//     40%,
-//     100% {
-//         transform: translateY(0)
-//     }
-
-//     20% {
-//         transform: translateY(-20px)
-//     }
-// }
-
-//animate 3
+//Animate Ablauf (Lets go)
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 .position-ablauf {
@@ -270,9 +239,9 @@
 
 svg {
     display: block;
-    font: 10.5em 'Montserrat';
-    width: 960px;
-    height: 300px;
+    font: 18em 'Montserrat';
+    width: 500px;
+    height: auto;
     margin: 0 auto;
 }
 
