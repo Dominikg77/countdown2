@@ -27,24 +27,25 @@
 
 
 <div class="container d-flex flex-column align-items-center justify-content-center">
-  <div class=" d-flex justify-content-center mb-3">
-    <img class="img-main" src="{{mainImgview}}">
-  </div>
+
 
   <div class="content fluid">
     <h1 class="mb-2" [innerHTML]="htmltitel"></h1>
     <h4 class="mb-3" [innerHTML]="htmlsubtitel" class="beschreibung"></h4>
 
+    <div class=" d-flex justify-content-center mb-3">
+      <img class="img-main" src="{{mainImgview}}">
+    </div>
 
     <div *ngIf="!isexpired"
       class="d-flex flex-column	flex-md-row justify-content-around align-items-center position-timer ">
       <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
-        <h5 class="me-2">{{this.hour}}</h5>
-        <p class="ms-2">Stunden</p>
-      </span>
-      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
         <h5 class="me-2">{{this.day}}</h5>
         <p class="ms-2">Tage</p>
+      </span>
+      <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
+        <h5 class="me-2">{{this.hour}}</h5>
+        <p class="ms-2">Stunden</p>
       </span>
       <span class="d-flex flex-row flex-md-column justify-content-center align-items-center">
         <h5 class="me-2">{{this.minutes}}</h5>
