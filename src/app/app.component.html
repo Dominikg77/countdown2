@@ -1,36 +1,61 @@
-<div *ngIf="!isImg">
+<div *ngIf="!isEmpty">
   <img class="bg-img" src="{{bgImgview}}">
 </div>
 
-<div [ngClass]="{dnone:state}" id="edit" class="edit-container">
 
-  <form class="d-flex align-items-center flex-column	flex-md-row" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-    <input class="mb-2" formControlName="titel" type="text" placeholder="Titel">
-    <input class="mb-2" formControlName="subtitel" type="text" placeholder="Subtitel">
-    <input class="mb-2" formControlName="dateInput" type="datetime-local" placeholder="Event Datum">
-    <button class="btn btn-warning" type="submit">Erstellen</button>
-  </form>
-  <button class="btn btn-danger ms-2 h-50" (click)="deleteF()">Clear</button>
-  <!-- <button class="btn btn-light ms-2 h-50" (click)="editModusToggel()">Ausblenden</button> -->
+<div [ngClass]="{dnone:state}" id="edit">
+  <div class="edit-container">
+    <form class="d-flex align-items-center flex-column	flex-md-row mb-3" [formGroup]="checkoutForm"
+      (ngSubmit)="onSubmit()">
+      <input class="mb-2" formControlName="titel" type="text" placeholder="Titel" (ngModelChange)="changeTitle($event)">
+      <input class="mb-2" formControlName="subtitel" type="text" placeholder="Subtitel" required="required"
+        (ngModelChange)="changeSubTitle($event)">
+      <input class="mb-2" formControlName="dateInput" type="datetime-local" placeholder="Event Datum"
+        required="required" (ngModelChange)="changeDate($event)">
+      <button [disabled]="disableBtn" class="btn btn-warning" type="submit">Erstellen</button>
+      <!-- <button class="btn btn-danger ms-2 h-50" (click)="deleteF()">Clear</button> -->
+    </form>
 
 
-
-  <div class="container-radio">
-    <label class="me-3" id="example-radio-group-label">Kategorie auswählen:</label>
-    <mat-radio-group class="example-radio-group" [(ngModel)]="aktiveCategorie">
-      <mat-radio-button class="example-radio-button me-2" *ngFor="let categorie of categories" [value]="categorie">
-        {{categorie}}
-      </mat-radio-button>
-    </mat-radio-group>
+    <div class="container-radio">
+      <label class="ms-2 me-2" id="example-radio-group-label">Kategorie auswählen:</label>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="aktiveCategorie">
+        <mat-radio-button class="example-radio-button me-2" *ngFor="let categorie of categories" [value]="categorie"
+          (click)="changeRadio($event)">
+          {{categorie}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
 </div>
 
 
-<div class="container d-flex flex-column align-items-center justify-content-center">
+
+<div *ngIf="isEmpty">
+  <div class="alert-warn">
+    <h2> <strong>Info:</strong> Ganz oben Links im Ecken können sie drüber Hovern, Edit Button klicken und alle Daten
+      für
+      den Countdown
+      eintragen</h2>
+  </div>
+</div>
+
+
+
+<div *ngIf="!isEmpty" class="container d-flex flex-column align-items-center justify-content-center">
 
 
   <div class="content fluid">
-    <h1 class="mb-2" [innerHTML]="htmltitel"></h1>
+    <!-- <h1 class="mb-2" [innerHTML]="htmltitel"></h1> -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="animate-charcter" [innerHTML]="htmltitel"> </h1>
+        </div>
+      </div>
+    </div>
+
     <h4 class="mb-3" [innerHTML]="htmlsubtitel" class="beschreibung"></h4>
 
     <div class=" d-flex justify-content-center mb-3">
@@ -57,13 +82,53 @@
       </span>
     </div>
 
-    <div *ngIf="isexpired">
-      <p class="text-red">Abgelaufen</p>
+    <div class="position-ablauf" *ngIf="isexpired">
+
+      <!-- hier einfügen -->
+      <!-- Animate 3 -->
+      <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+          <text text-anchor="middle" x="50%" y="80%">Lets go </text>
+        </symbol>
+
+        <g class="g-ants">
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+          <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+      </svg>
+
     </div>
 
 
   </div>
 </div>
 <div class="position-edit-btn">
-  <button class="edit-btn" (click)="editModusToggel()">bearbeiten</button>
+  <button class="edit-btn" (click)="editModusToggel()">
+    edit
+  </button>
 </div>
+
+
+<!-- Animate 1 -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="animate-charcter"> Lets go</h3>
+    </div>
+  </div>
+</div> -->
+
+<!-- Animate 2 -->
+<!-- <div class="waviy">
+  <span style="--i:1">L</span>
+  <span style="--i:2">E</span>
+  <span style="--i:3">T</span>
+  <span style="--i:4">S</span>
+  <span style="--i:5">></span>
+  <span style="--i:6">G</span>
+  <span style="--i:7">O</span>
+
+</div> -->

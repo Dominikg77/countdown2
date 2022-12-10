@@ -72,10 +72,12 @@
 
 
 .edit-container {
-    position: absolute;
-    top: 30px;
     display: flex;
-    background-color: black;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    z-index: 10;
 
     .edit-container button {
         background-color: $black;
@@ -111,41 +113,41 @@
         color: $black !important;
         background-color: $red !important;
     }
-}
 
+    .container-radio {
+        color: $gold;
+        font-size: 1rem;
 
-.container-radio {
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    color: $gold;
-    font-size: 1rem;
-    background-color: black;
-    z-index: 10;
-
-    label {
-        font-weight: 600;
+        label {
+            font-weight: 600;
+        }
     }
-
 }
-
 
 .position-edit-btn {
     position: absolute;
     top: 5px;
     left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 50px;
 
     .edit-btn {
         background-color: transparent;
         padding: 10px;
         border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
         border: none;
-        color: rgba(128, 128, 128, 0.182);
+        color: transparent;
     }
 
     .edit-btn:hover {
         transition: all 125ms ease-in-out;
-        background-color: rgba(0, 0, 0, 0.484);
+        background-color: rgba(0, 0, 0, 0.3);
         color: $white
     }
 }
@@ -153,6 +155,23 @@
 .dnone {
     display: none;
 }
+
+.alert-warn {
+    color: $gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 20vh;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    margin-top: 100px;
+
+    strong {
+        color: red;
+    }
+}
+
 
 @media screen and (max-width:768px) {
     .container {
@@ -167,4 +186,132 @@
         margin-top: 20px !important;
     }
 
+}
+
+//Animate 1
+.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient(-225deg,
+            #f5e19f7d 0%,
+            #F5E19F 29%,
+            #f0c9478a 67%,
+            #F0C947 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 5s linear infinite;
+    display: inline-block;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+//Animate 2
+// @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+// * {
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+// }
+
+// body {
+//     background-color: #151719;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     min-height: 100vh;
+// }
+
+// .waviy {
+//     position: relative;
+//     -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, .2));
+//     font-size: 60px;
+// }
+
+// .waviy span {
+//     font-family: 'Alfa Slab One', cursive;
+//     position: relative;
+//     display: inline-block;
+//     color: $gold;
+//     text-transform: uppercase;
+//     animation: waviy 1s infinite;
+//     animation-delay: calc(.1s * var(--i));
+
+// }
+
+// @keyframes waviy {
+
+//     0%,
+//     40%,
+//     100% {
+//         transform: translateY(0)
+//     }
+
+//     20% {
+//         transform: translateY(-20px)
+//     }
+// }
+
+//animate 3
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+.position-ablauf {
+    margin-bottom: 150px;
+}
+
+svg {
+    display: block;
+    font: 10.5em 'Montserrat';
+    width: 960px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1) {
+    stroke: $black;
+    animation-delay: -1;
+}
+
+.text-copy:nth-child(2) {
+    stroke: $white;
+    animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+    stroke: $gold-light;
+    animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+    stroke: $gold-light;
+    animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+    stroke: $gold;
+    animation-delay: -5s;
+}
+
+@keyframes stroke-offset {
+    100% {
+        stroke-dashoffset: -35%;
+    }
 }

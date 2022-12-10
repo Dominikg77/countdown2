@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { TitleStrategy } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +8,9 @@ import { TitleStrategy } from '@angular/router';
 })
 export class AppComponent {
   title = 'MBK-Coutndown';
+  required: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   date: any;
   state: boolean = true;
@@ -32,7 +33,14 @@ export class AppComponent {
   bgImgAsText: any;
   bgImg: string = '';
   bgImgview: string = ''
-  isImg: boolean = true;
+  isEmpty: boolean = true;
+
+  //value verübergehen zum Button Disablen 
+  passTitel: string = '';
+  passSubTitel: string = '';
+  passDate: string = '';
+  passRadio: string = '';
+  disableBtn: boolean = true
 
   // für radio Button die Kategorien
   aktiveCategorie: any;
@@ -46,12 +54,16 @@ export class AppComponent {
 
   ngOnInit(): void {
 
-    if (this.bgImgview == '') {
-      this.isImg = true
-    }
+    if (this.htmltitel == '' && this.bgImgview == '') {
+      this.bgImg = '../assets/img/HomeNew.png'
+      console.log('leer')
+      this.isEmpty = false;
+    } else {
 
-    this.load();
-    this.TimerFunction();
+      this.load();
+      this.TimerFunction();
+    }
+    console.log(this.checkoutForm.value)
 
   }
   editModusToggel() {
@@ -77,18 +89,40 @@ export class AppComponent {
     }, 100);
   }
 
+  // disable erstellen Button
+  changeTitle(event: any) {
+    this.passTitel = event
+    this.disableButton()
+  }
+  changeSubTitle(event: any) {
+    this.passSubTitel = event
+    // this.disableButton()
+  }
+  changeDate(event: any) {
+    this.passDate = event
+    this.disableButton()
+  }
+  changeRadio(event: any) {
+    this.passRadio = event.type;
+    this.disableButton()
+  }
+  disableButton() {
+    if (this.passTitel != '' && this.passSubTitel != '' && this.passRadio != '' && this.passDate != '') {
+      this.disableBtn = false
+    }
+  }
+
   // wenn Button erstellen dann...
   onSubmit() {
     this.htmltitel = this.checkoutForm.value.titel;
     this.htmlsubtitel = this.checkoutForm.value.subtitel;
     this.dateInput = this.checkoutForm.value.dateInput;
     this.date = new Date(this.dateInput).getTime();
-    this.state = true;
     this.cat();
     this.save();
     this.load();
     this.TimerFunction();
-
+    this.state = true;
   }
 
   cat() {
@@ -126,12 +160,12 @@ export class AppComponent {
       this.mainImg = '../assets/img/Trading.svg'
       this.bgImg = '../assets/img/TradingNew.png'
     }
-    this.isImg = false
+    this.isEmpty = false
   }
 
-  deleteF() {
-    this.checkoutForm.reset();
-  }
+  // deleteF() {
+  //   this.checkoutForm.reset();
+  // }
 
   save() {
     //save Formular
@@ -161,10 +195,12 @@ export class AppComponent {
     this.bgImgAsText = localStorage.getItem(`bgImg`)
     let bgImg = JSON.parse(this.bgImgAsText);
     this.bgImgview = bgImg
-    this.isImg = false
+    this.isEmpty = false
 
   }
 
 
 
 }
+
+
